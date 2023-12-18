@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AmplicodePersistenceUnitSettings">
+    <persistence-units>
+      <persistence-unit moduleName="shop-app" name="Default">
+        <packages>
+          <package value="com.company.multishop" />
+        </packages>
+      </persistence-unit>
+    </persistence-units>
+  </component>
+  <component name="AmplicodeProjectState">
+    <option name="version" value="0.1" />
+  </component>
+  <component name="GraphQlScalarTypes" initialized="true">
+    <scalar-types>
+      <scalar-type name="DateTime" javaType="java.time.OffsetDateTime" assignExpr="graphql.scalars.ExtendedScalars#DateTime" />
+      <scalar-type name="Date" javaType="java.time.LocalDate" assignExpr="graphql.scalars.ExtendedScalars#Date" />
+      <scalar-type name="Time" javaType="java.time.OffsetTime" assignExpr="graphql.scalars.ExtendedScalars#Time" />
+      <scalar-type name="LocalTime" javaType="java.time.LocalTime" assignExpr="com.amplicode.core.graphql.scalars.LocalTimeScalar#INSTANCE" />
+      <scalar-type name="Url" javaType="java.net.URL" assignExpr="graphql.scalars.ExtendedScalars#Url" />
+      <scalar-type name="Long" javaType="java.lang.Long" assignExpr="com.amplicode.core.graphql.scalars.LongScalar#INSTANCE" />
+      <scalar-type name="BigDecimal" javaType="java.math.BigDecimal" assignExpr="com.amplicode.core.graphql.scalars.BigDecimalScalar#INSTANCE" />
+      <scalar-type name="BigInteger" javaType="java.math.BigInteger" assignExpr="com.amplicode.core.graphql.scalars.BigIntegerScalar#INSTANCE" />
+      <scalar-type name="LocalDateTime" javaType="java.time.LocalDateTime" assignExpr="com.amplicode.core.graphql.scalars.LocalDateTimeScalar#INSTANCE" />
+      <scalar-type name="Timestamp" javaType="java.util.Date" assignExpr="com.amplicode.core.graphql.scalars.TimestampScalar#INSTANCE" />
+      <scalar-type name="Void" javaType="java.lang.Void" assignExpr="com.amplicode.core.graphql.scalars.VoidScalar#INSTANCE" />
+    </scalar-types>
+  </component>
+</project>

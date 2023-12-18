@@ -1,0 +1,17 @@
+schema {
+    query: Query
+}
+
+"Query root"
+type Query {
+    checkAuthenticated: Void # a system query to check whether a user is authenticated or not. If not, GraphQL error is returned.
+    userInfo: UserInfo # a system query to get an authenticated user details
+    userPermissions: [String] # a system query to security roles for an authenticated user
+}
+
+"Contains information about user"
+type UserInfo {
+    id: String! # user identifier
+    fullName: String # user display name, e.g. full name or username
+    avatar: String # user's profile picture as URL or Base64 string
+}

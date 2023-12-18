@@ -1,0 +1,87 @@
+input OffsetPageInput {
+    number: Int!
+    size: Int!
+}
+
+enum SortDirection {
+    ASC
+    DESC
+}
+
+type FileUploadResponse {
+    fileId: String!
+    uploadUrl: Url!
+}
+
+
+directive @assertFalse on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @pattern(regexp: String!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @negative on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @min(value: Long!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @assertTrue on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @negativeOrZero on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @notBlank on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @futureOrPresent on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @email(regexp: String = ".*") on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @max(value: Long!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @past on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @length(max: Int = 2147483647, min: Int = 0) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @positive on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @pastOrPresent on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @url on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @positiveOrZero on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @decimalMax(inclusive: Boolean = true, value: String!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @javaType(name: String!) on SCALAR | OBJECT | INPUT_OBJECT
+
+directive @size(max: Int = 2147483647, min: Int = 0) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @null on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @future on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @digits(fraction: Int!, integer: Int!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @notEmpty on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @decimalMin(inclusive: Boolean = true, value: String!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @fileId on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
+
+scalar BigDecimal @javaType(name: "java.math.BigDecimal")
+
+scalar BigInteger @javaType(name: "java.math.BigInteger")
+
+scalar Date @javaType(name: "java.time.LocalDate")
+
+scalar DateTime @javaType(name: "java.time.OffsetDateTime")
+
+scalar LocalDateTime @javaType(name: "java.time.LocalDateTime")
+
+scalar LocalTime @javaType(name: "java.time.LocalTime")
+
+scalar Long @javaType(name: "java.lang.Long")
+
+scalar Time @javaType(name: "java.time.OffsetTime")
+
+scalar Timestamp @javaType(name: "java.util.Date")
+
+scalar Url @javaType(name: "java.net.URL")
+
+scalar Void @javaType(name: "java.lang.Void")
