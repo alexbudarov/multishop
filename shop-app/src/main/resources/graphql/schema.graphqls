@@ -17,6 +17,7 @@ type Query {
 type Mutation {
     deleteProduct(id: ID!): Void
     updateProduct(input: ProductDtoInput!): ProductDto!
+    inflatePrice(productId: Long): Void
 }
 
 "Contains information about user"
