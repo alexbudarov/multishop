@@ -48,8 +48,6 @@ directive @positiveOrZero on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
 
 directive @decimalMax(inclusive: Boolean = true, value: String!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
 
-directive @javaType(name: String!) on SCALAR | OBJECT | INPUT_OBJECT
-
 directive @size(max: Int = 2147483647, min: Int = 0) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
 
 directive @null on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION

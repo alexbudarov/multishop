@@ -1,5 +1,8 @@
+directive @javaType(name: String!) on SCALAR | OBJECT | INPUT_OBJECT
+
 schema {
     query: Query
+    mutation: Mutation
 }
 
 "Query root"
@@ -7,6 +10,14 @@ type Query {
     checkAuthenticated: Void # a system query to check whether a user is authenticated or not. If not, GraphQL error is returned.
     userInfo: UserInfo # a system query to get an authenticated user details
     userPermissions: [String] # a system query to security roles for an authenticated user
+    productList(filter: ProductFilterInput, sort: [ProductOrderByInput], page: OffsetPageInput): ProductResultPage!
+    product(id: ID!): Product!
+}
+
+type Mutation {
+    deleteProduct(id: ID!): Void
+    updateProduct(input: ProductInput!): Product!
+    inflatePrice(productId: Long): Product
 }
 
 "Contains information about user"
@@ -14,4 +25,37 @@ type UserInfo {
     id: String! # user identifier
     fullName: String # user display name, e.g. full name or username
     avatar: String # user's profile picture as URL or Base64 string
+}
+
+type Product {
+    id: ID
+    name: String!
+    price: BigDecimal
+}
+
+type ProductResultPage {
+    content: [Product]
+    totalElements: Long!
+}
+
+enum ProductOrderByProperty {
+    NAME
+    PRICE
+}
+
+input ProductFilterInput {
+    name: String
+    priceMin: BigDecimal
+    priceMax: BigDecimal
+}
+
+input ProductInput {
+    id: ID
+    name: String!
+    price: BigDecimal
+}
+
+input ProductOrderByInput {
+    property: ProductOrderByProperty
+    direction: SortDirection
 }
