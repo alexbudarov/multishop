@@ -10,14 +10,13 @@ type Query {
     checkAuthenticated: Void # a system query to check whether a user is authenticated or not. If not, GraphQL error is returned.
     userInfo: UserInfo # a system query to get an authenticated user details
     userPermissions: [String] # a system query to security roles for an authenticated user
-    productList(filter: ProductFilterInput, sort: [ProductOrderByInput], page: OffsetPageInput): ProductResultPage!
-    product(id: ID!): Product!
+    productList(filter: ProductFilterInput, sort: [ProductOrderByInput], page: OffsetPageInput): ProductDtoResultPage!
+    product(id: ID!): ProductDto!
 }
 
 type Mutation {
     deleteProduct(id: ID!): Void
-    updateProduct(input: ProductInput!): Product!
-    inflatePrice(productId: Long): Product
+    updateProduct(input: ProductDtoInput!): ProductDto!
 }
 
 "Contains information about user"
@@ -27,14 +26,14 @@ type UserInfo {
     avatar: String # user's profile picture as URL or Base64 string
 }
 
-type Product {
+type ProductDto {
     id: ID
     name: String!
     price: BigDecimal
 }
 
-type ProductResultPage {
-    content: [Product]
+type ProductDtoResultPage {
+    content: [ProductDto]
     totalElements: Long!
 }
 
@@ -45,14 +44,12 @@ enum ProductOrderByProperty {
 
 input ProductFilterInput {
     name: String
-    priceMin: BigDecimal
-    priceMax: BigDecimal
 }
 
-input ProductInput {
+input ProductDtoInput {
     id: ID
     name: String!
-    price: BigDecimal
+    price: BigDecimal @positive
 }
 
 input ProductOrderByInput {

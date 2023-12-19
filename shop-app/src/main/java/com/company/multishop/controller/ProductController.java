@@ -3,7 +3,8 @@ package com.company.multishop.controller;
 import com.amplicode.core.graphql.annotation.GraphQLId;
 import com.amplicode.core.graphql.paging.OffsetPageInput;
 import com.amplicode.core.graphql.paging.ResultPage;
-import com.company.shopmodel.calc.ProductService;
+import com.company.multishop.controller.dto.ProductDto;
+import com.company.multishop.controller.dto.ProductMapper;
 import com.company.shopmodel.entity.Product;
 import com.company.shopmodel.entity.ProductRepository;
 import jakarta.persistence.criteria.Predicate;
@@ -20,7 +21,6 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -30,13 +30,11 @@ import java.util.stream.Collectors;
 @Controller
 public class ProductController {
     private final ProductRepository crudRepository;
+    private final ProductMapper mapper;
 
-    private final ProductService productService;
-
-    public ProductController(ProductRepository crudRepository,
-                             ProductService productService) {
+    public ProductController(ProductRepository crudRepository, ProductMapper mapper) {
         this.crudRepository = crudRepository;
-        this.productService = productService;
+        this.mapper = mapper;
     }
 
     @MutationMapping(name = "deleteProduct")
@@ -51,7 +49,7 @@ public class ProductController {
     @QueryMapping(name = "productList")
     @Transactional(readOnly = true)
     @NonNull
-    public ResultPage<Product> findAll(
+    public ResultPage<ProductDto> findAll(
             @Argument ProductFilter filter,
             @Argument("sort") List<ProductOrderByInput> sortInput,
             @Argument("page") OffsetPageInput pageInput
@@ -61,28 +59,32 @@ public class ProductController {
                 .map(p -> PageRequest.of(p.getNumber(), p.getSize()).withSort(createSort(sortInput)))
                 .orElseGet(() -> PageRequest.ofSize(20).withSort(createSort(sortInput)));
         Page<Product> pageData = crudRepository.findAll(specification, page);
-        return ResultPage.page(pageData.getContent(), pageData.getTotalElements());
+        return ResultPage.page(pageData.getContent().stream().map(mapper::toDto).collect(Collectors.toList()), pageData.getTotalElements());
     }
 
     @QueryMapping(name = "product")
     @Transactional(readOnly = true)
     @NonNull
-    public Product findById(@GraphQLId @Argument @NonNull Long id) {
+    public ProductDto findById(@GraphQLId @Argument @NonNull Long id) {
         return crudRepository.findById(id)
+                .map(mapper::toDto)
                 .orElseThrow(() -> new RuntimeException(String.format("Unable to find entity by id: %s ", id)));
     }
 
     @MutationMapping(name = "updateProduct")
     @Transactional
     @NonNull
-    public Product update(@Argument @NonNull @Valid Product input) {
+    public ProductDto update(@Argument @NonNull @Valid ProductDto input) {
         if (input.getId() != null) {
             if (!crudRepository.existsById(input.getId())) {
                 throw new RuntimeException(
                         String.format("Unable to find entity by id: %s ", input.getId()));
             }
         }
-        return crudRepository.save(input);
+        Product entity = new Product();
+        mapper.partialUpdate(input, entity);
+        entity = crudRepository.save(entity);
+        return mapper.toDto(entity);
     }
 
     protected Sort createSort(List<ProductOrderByInput> sortInput) {
@@ -111,15 +113,7 @@ public class ProductController {
         return Sort.by(orders);
     }
 
-    @MutationMapping(name = "inflatePrice")
-    public Product inflatePrice(@Argument Long productId) {
-        Product product = crudRepository.findById(productId).orElseThrow();
-        productService.inflatePrice(product);
-        Product result = crudRepository.findById(productId).orElseThrow();
-        return result;
-    }
-
-    static class ProductOrderByInput {
+    public static class ProductOrderByInput {
         private ProductOrderByProperty property;
         private SortDirection direction;
 
@@ -157,21 +151,13 @@ public class ProductController {
                 if (filter.name != null) {
                     predicates.add(criteriaBuilder.like(criteriaBuilder.lower(root.get("name")), "%" + filter.name.toLowerCase() + "%"));
                 }
-                if (filter.priceMin != null) {
-                    predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("price"), filter.priceMin));
-                }
-                if (filter.priceMax != null) {
-                    predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("price"), filter.priceMax));
-                }
             }
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         };
     }
 
-    static class ProductFilter {
+    public static class ProductFilter {
         private String name;
-        private BigDecimal priceMin;
-        private BigDecimal priceMax;
 
         public String getName() {
             return name;
@@ -179,22 +165,6 @@ public class ProductController {
 
         public void setName(String name) {
             this.name = name;
-        }
-
-        public BigDecimal getPriceMin() {
-            return priceMin;
-        }
-
-        public void setPriceMin(BigDecimal priceMin) {
-            this.priceMin = priceMin;
-        }
-
-        public BigDecimal getPriceMax() {
-            return priceMax;
-        }
-
-        public void setPriceMax(BigDecimal priceMax) {
-            this.priceMax = priceMax;
         }
     }
 }
