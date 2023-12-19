@@ -1,0 +1,10 @@
+{
+  "name": "multishop-generation",
+  "devDependencies": {
+    "@amplicode/codegen": "0.61.0"
+  },
+  "scripts": {
+    "postinstall": "npm run listGenerators",
+    "listGenerators": "amplicodegen list -s generators.json"
+  }
+}

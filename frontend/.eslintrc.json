@@ -1,0 +1,4 @@
+{
+  "extends": "react-app",
+  "ignorePatterns": ["dist", "src/dev/*Template.tsx"]
+}

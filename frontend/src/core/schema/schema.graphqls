@@ -1,0 +1,140 @@
+# THIS FILE WAS GENERATED AUTOMATICALLY. DO NOT EDIT.
+directive @assertFalse on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @assertTrue on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @decimalMax(inclusive: Boolean = true, value: String!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @decimalMin(inclusive: Boolean = true, value: String!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @digits(fraction: Int!, integer: Int!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @email(regexp: String = ".*") on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @fileId on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @future on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @futureOrPresent on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @length(max: Int = 2147483647, min: Int = 0) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @max(value: Long!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @min(value: Long!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @negative on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @negativeOrZero on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @notBlank on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @notEmpty on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @null on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @past on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @pastOrPresent on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @pattern(regexp: String!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @positive on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @positiveOrZero on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @size(max: Int = 2147483647, min: Int = 0) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @url on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @javaType(name: String!) on SCALAR | OBJECT | INPUT_OBJECT
+
+# Query root
+type Query {
+  userInfo: UserInfo
+  product(id: ID!): ProductDto!
+  checkAuthenticated: Void
+  userPermissions: [String]
+  productList(filter: ProductFilterInput, sort: [ProductOrderByInput], page: OffsetPageInput): ProductDtoResultPage!
+}
+
+type Mutation {
+  updateProduct(input: ProductDtoInput!): ProductDto!
+  deleteProduct(id: ID!): Void
+}
+
+type FileUploadResponse {
+  fileId: String!
+  uploadUrl: Url!
+}
+
+type ProductDto {
+  id: ID
+  name: String!
+  price: BigDecimal
+}
+
+type ProductDtoResultPage {
+  content: [ProductDto]
+  totalElements: Long!
+}
+
+# Contains information about user
+type UserInfo {
+  id: String!
+  fullName: String
+  avatar: String
+}
+
+input OffsetPageInput {
+  number: Int!
+  size: Int!
+}
+
+input ProductDtoInput {
+  id: ID
+  name: String!
+  price: BigDecimal
+}
+
+input ProductFilterInput {
+  name: String
+}
+
+input ProductOrderByInput {
+  property: ProductOrderByProperty
+  direction: SortDirection
+}
+
+enum ProductOrderByProperty {
+  NAME
+  PRICE
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
+
+scalar BigDecimal
+
+scalar BigInteger
+
+scalar Date
+
+scalar DateTime
+
+scalar LocalDateTime
+
+scalar LocalTime
+
+scalar Long
+
+scalar Time
+
+scalar Timestamp
+
+scalar Url
+
+scalar Void
+

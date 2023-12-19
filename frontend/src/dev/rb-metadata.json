@@ -1,0 +1,512 @@
+{
+  "components": {
+    "EntityLookupField": {
+      "importAliases": [
+        "./src/core/crud/entity-lookup-field/EntityLookupField"
+      ],
+      "messageProps": [
+        "drawerTitle"
+      ]
+    },
+    "ValueWithLabel": {
+      "importAliases": [
+        "./src/core/crud/ValueWithLabel"
+      ],
+      "outlineProps": [
+        "key",
+        "label"
+      ],
+      "messageProps": [
+        "label"
+      ]
+    },
+    "Button": {
+      "importAliases": [
+        "antd",
+        "antd/es/button"
+      ],
+      "categories": [
+        "General",
+        "Style"
+      ],
+      "props": {
+        "type": {
+          "category": "General",
+          "weight": -2
+        },
+        "size": {
+          "category": "Style",
+          "weight": -2
+        },
+        "shape": {
+          "category": "Style",
+          "weight": -1
+        }
+      },
+      "outlineProps": [
+        "type",
+        "icon",
+        "children"
+      ]
+    },
+    "Title": {
+      "importAliases": [
+        "antd",
+        "antd/es/typography/Title"
+      ],
+      "outlineProps": [
+        "level",
+        "children"
+      ],
+      "messageProps": [
+        "title"
+      ]
+    },
+    "Input": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "outlineProps": [
+        "id",
+        "itemId"
+      ],
+      "messageProps": [
+        "addonAfter",
+        "addonBefore"
+      ]
+    },
+    "Card": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "outlineProps": [
+        "title"
+      ],
+      "messageProps": [
+        "title"
+      ]
+    },
+    "Table": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "outlineProps": [
+        "title"
+      ]
+    },
+    "Table.Column": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "outlineProps": [
+        "title",
+        "dataIndex",
+        "key"
+      ],
+      "messageProps": [
+        "title"
+      ]
+    },
+    "SubMenu": {
+      "importAliases": [
+        "antd",
+        "antd/es/menu/SubMenu"
+      ],
+      "outlineProps": [
+        "key",
+        "title",
+        "children"
+      ],
+      "messageProps": [
+        "title"
+      ]
+    },
+    "Menu.ItemGroup": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "outlineProps": [
+        "key",
+        "title",
+        "children"
+      ],
+      "messageProps": [
+        "title"
+      ]
+    },
+    "Menu.Item": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "outlineProps": [
+        "key",
+        "title",
+        "children"
+      ],
+      "messageProps": [
+        "title"
+      ]
+    },
+    "Col": {
+      "importAliases": [
+        "antd",
+        "antd/es/grid/col"
+      ],
+      "outlineProps": [
+        "span"
+      ]
+    },
+    "Radio": {
+      "importAliases": [
+        "antd",
+        "antd/es/radio"
+      ],
+      "outlineProps": [
+        "children"
+      ]
+    },
+    "Form.Item": {
+      "importAliases": [
+        "antd"
+      ],
+      "outlineProps": [
+        "label",
+        "name"
+      ]
+    },
+    "Text": {},
+    "Link": {
+      "importAliases": [
+        "react-router-dom"
+      ],
+      "messageProps": [
+        "title"
+      ]
+    },
+    "Divider": {},
+    "Space": {},
+    "App Layout": {},
+    "AutoComplete": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "messageProps": [
+        "placeholder"
+      ]
+    },
+    "Cascader": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "messageProps": [
+        "placeholder"
+      ]
+    },
+    "Checkbox": {},
+    "DatePicker": {
+      "importAliases": [
+        "@amplicode/react"
+      ],
+      "messageProps": [
+        "placeholder"
+      ]
+    },
+    "InputNumber": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "messageProps": [
+        "addonAfter",
+        "addonBefore"
+      ]
+    },
+    "Rate": {},
+    "Select": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "messageProps": [
+        "placeholder"
+      ]
+    },
+    "Slider": {},
+    "Switch": {},
+    "TimePicker": {
+      "importAliases": [
+        "antd",
+        "antd/es",
+        "@amplicode/react"
+      ],
+      "messageProps": [
+        "placeholder"
+      ]
+    },
+    "Avatar": {
+      "importAliases": [
+        "antd",
+        "antd/es/avatar/avatar",
+        "antd/lib/avatar/avatar"
+      ],
+      "messageProps": [
+        "alt"
+      ]
+    },
+    "Avatar.Group": {},
+    "Badge": {
+      "importAliases": [
+        "antd"
+      ],
+      "messageProps": [
+        "text",
+        "title"
+      ]
+    },
+    "Badge.Ribbon": {
+      "importAliases": [
+        "antd/es/badge/Ribbon",
+        "antd/lib/badge/Ribbon"
+      ],
+      "messageProps": [
+        "text"
+      ]
+    },
+    "Calendar": {},
+    "Carousel": {},
+    "Collapse": {},
+    "CollapsePanel": {
+      "importAliases": [
+        "antd/es/collapse/CollapsePanel",
+        "antd/lib/collapse/CollapsePanel"
+      ],
+      "messageProps": [
+        "header"
+      ]
+    },
+    "Comment": {
+      "importAliases": [
+        "antd"
+      ],
+      "messageProps": [
+        "author",
+        "content"
+      ]
+    },
+    "Descriptions": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "messageProps": [
+        "title"
+      ]
+    },
+    "Descriptions.Item": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "messageProps": [
+        "label"
+      ]
+    },
+    "Empty": {
+      "importAliases": [
+        "antd"
+      ],
+      "messageProps": [
+        "description"
+      ]
+    },
+    "Image": {
+      "importAliases": [
+        "antd"
+      ],
+      "messageProps": [
+        "alt",
+        "placeholder"
+      ]
+    },
+    "Image.PreviewGroup": {},
+    "List": {
+      "importAliases": [
+        "antd",
+        "antd/es",
+        "antd/es/form/Form",
+        "antd/lib/form/Form"
+      ],
+      "messageProps": [
+        "header",
+        "footer"
+      ]
+    },
+    "List.Item": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "messageProps": [
+        "extra"
+      ]
+    },
+    "List.Item.Meta": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "messageProps": [
+        "title",
+        "description"
+      ]
+    },
+    "Popover": {
+      "importAliases": [
+        "antd"
+      ],
+      "messageProps": [
+        "content",
+        "title"
+      ]
+    },
+    "Statistic": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "messageProps": [
+        "prefix",
+        "suffix",
+        "title"
+      ]
+    },
+    "Tabs": {},
+    "Tabs.TabPane": {
+      "importAliases": [
+        "antd"
+      ],
+      "messageProps": [
+        "tab"
+      ]
+    },
+    "Tag": {},
+    "Timeline": {},
+    "TimelineItem": {
+      "importAliases": [
+        "antd/es/timeline/TimelineItem",
+        "antd/lib/timeline/TimelineItem"
+      ],
+      "messageProps": [
+        "label"
+      ]
+    },
+    "Tooltip": {
+      "importAliases": [
+        "antd"
+      ],
+      "messageProps": [
+        "title"
+      ]
+    },
+    "Tree": {},
+    "Affix": {},
+    "Breadcrumb": {},
+    "Dropdown": {},
+    "PageHeader": {
+      "importAliases": [
+        "antd"
+      ],
+      "messageProps": [
+        "extra",
+        "footer",
+        "subTitle",
+        "title"
+      ]
+    },
+    "Pagination": {},
+    "Steps": {},
+    "Steps.Step": {
+      "importAliases": [
+        "antd"
+      ],
+      "messageProps": [
+        "title",
+        "subTitle",
+        "description"
+      ]
+    },
+    "Alert": {
+      "importAliases": [
+        "antd"
+      ],
+      "messageProps": [
+        "message",
+        "description",
+        "closeText"
+      ]
+    },
+    "Drawer": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "messageProps": [
+        "title",
+        "extra",
+        "footer"
+      ]
+    },
+    "Modal": {
+      "importAliases": [
+        "antd",
+        "antd/es/modal/Modal",
+        "antd/lib/modal/Modal"
+      ],
+      "messageProps": [
+        "title",
+        "footer",
+        "cancelText",
+        "okText"
+      ]
+    },
+    "Popconfirm": {
+      "importAliases": [
+        "antd"
+      ],
+      "messageProps": [
+        "title",
+        "cancelText",
+        "okText"
+      ]
+    },
+    "Progress": {},
+    "Result": {
+      "importAliases": [
+        "antd"
+      ],
+      "messageProps": [
+        "title",
+        "subTitle",
+        "extra"
+      ]
+    },
+    "Skeleton": {},
+    "Spin": {
+      "importAliases": [
+        "antd",
+        "antd/es"
+      ],
+      "messageProps": [
+        "tip"
+      ]
+    }
+  }
+}
